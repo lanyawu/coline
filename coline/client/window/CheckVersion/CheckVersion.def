@@ -1,0 +1,7 @@
+LIBRARY
+
+EXPORTS
+    CheckMainPlugins
+	CheckUpdateLocalFiles
+	CopyUpdateFiles
+	UpdateFilesFromSvr

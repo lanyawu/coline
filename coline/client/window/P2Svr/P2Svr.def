@@ -1,0 +1,9 @@
+LIBRARY "P2Svr"
+
+EXPORTS
+    P2SvrInit
+	P2SvrDestroy
+	P2SvrAddDlTask
+	P2SvrAddUpTask
+	P2SvrPostFile
+	P2SvrCancelTask
