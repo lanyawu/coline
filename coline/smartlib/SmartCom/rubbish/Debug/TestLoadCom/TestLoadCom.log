@@ -1,0 +1,17 @@
+﻿生成启动时间为 2014/1/18 10:21:32。
+     1>项目“E:\lanya\KZHI\Smartlib\SmartCom\TestLoadCom\TestLoadCom.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“E:\lanya\KZHI\Smartlib\SmartCom\\..\rubbish\Debug\TestLoadCom\TestLoadCom.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"E:\lanya\KZHI\Smartlib\SmartCom\\..\rubbish\Debug\TestLoadCom\TestLoadCom.exe.embed.manifest.res" E:\lanya\KZHI\Smartlib\SmartCom\\..\rubbish\Debug\TestLoadCom\TestLoadCom_manifest.rc 
+         
+     1>E:\lanya\KZHI\Smartlib\SmartCom\\..\rubbish\Debug\TestLoadCom\TestLoadCom_manifest.rc(1): error RC2135: file not found: E:\lanya\workarea\KZHI\Smartlib\SmartCom\\..\rubbish\Debug\TestLoadCom\TestLoadCom.exe.embed.manifest
+         
+     1>已完成生成项目“E:\lanya\KZHI\Smartlib\SmartCom\TestLoadCom\TestLoadCom.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.09

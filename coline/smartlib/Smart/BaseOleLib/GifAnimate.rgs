@@ -1,0 +1,27 @@
+HKCR
+{
+	BaseOleLib.GifAnimate.1 = s 'GifAnimate Class'
+	{
+		CLSID = s '{23444ED6-2FFB-475A-B7FA-378A286AA613}'
+	}
+	BaseOleLib.GifAnimate = s 'GifAnimate Class'
+	{
+		CLSID = s '{23444ED6-2FFB-475A-B7FA-378A286AA613}'
+		CurVer = s 'BaseOleLib.GifAnimate.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {23444ED6-2FFB-475A-B7FA-378A286AA613} = s 'GifAnimate Class'
+		{
+			ProgID = s 'BaseOleLib.GifAnimate.1'
+			VersionIndependentProgID = s 'BaseOleLib.GifAnimate'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{F2917F26-47A1-4AFF-AA72-2C694539D6DD}'
+		}
+	}
+}

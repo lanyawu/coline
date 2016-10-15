@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crypto", "Crypto\Crypto.vcxproj", "{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zlib", "zlib\zlib.vcxproj", "{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Unicode Debug|Win32 = Unicode Debug|Win32
+		Unicode Release|Win32 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Debug|Win32.Build.0 = Debug|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Release|Win32.ActiveCfg = Release|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Release|Win32.Build.0 = Release|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Unicode Debug|Win32.ActiveCfg = Debug|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Unicode Debug|Win32.Build.0 = Debug|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Unicode Release|Win32.ActiveCfg = Release|Win32
+		{8483006A-B47A-416A-9FF3-3F3DDA9A6A01}.Unicode Release|Win32.Build.0 = Release|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Debug|Win32.Build.0 = Debug|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Release|Win32.ActiveCfg = Release|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Release|Win32.Build.0 = Release|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Unicode Debug|Win32.ActiveCfg = Unicode Debug|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Unicode Debug|Win32.Build.0 = Unicode Debug|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Unicode Release|Win32.ActiveCfg = Unicode Release|Win32
+		{41079E78-42D1-4C7C-AB48-6D8A9761FF6D}.Unicode Release|Win32.Build.0 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

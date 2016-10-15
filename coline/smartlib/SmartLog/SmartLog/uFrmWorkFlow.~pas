@@ -1,0 +1,38 @@
+unit uFrmWorkFlow;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TfrmWorkFlow = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    edtTimeSect: TEdit;
+    mmFlow: TMemo;
+    btnAdd: TButton;
+    btnClose: TButton;
+    procedure FormCanResize(Sender: TObject; var NewWidth,
+      NewHeight: Integer; var Resize: Boolean);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmWorkFlow: TfrmWorkFlow;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmWorkFlow.FormCanResize(Sender: TObject; var NewWidth,
+  NewHeight: Integer; var Resize: Boolean);
+begin
+  Resize := False;
+end;
+
+end.

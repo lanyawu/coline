@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>Sqlite3_</ProjectName>
+    <ProjectGuid>{A5D856F4-E0FF-4E49-A80E-6163CB2567C6}</ProjectGuid>
+    <RootNamespace>sqlite3</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30128.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\..\Bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\..\rubbish\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\..\Bin\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\..\rubbish\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;NO_TCL;THREADSAFE;SQLITE_THREADSAFE;SQLITE_HAS_CODEC;SQLITE_ENABLE_COLUMN_METADATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>src\sqlite3.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;NO_TCL;THREADSAFE;SQLITE_HAS_CODEC;SQLITE_ENABLE_COLUMN_METADATA;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>src\sqlite3.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\alter.c" />
+    <ClCompile Include="src\analyze.c" />
+    <ClCompile Include="src\attach.c" />
+    <ClCompile Include="src\auth.c" />
+    <ClCompile Include="src\btree.c" />
+    <ClCompile Include="src\build.c" />
+    <ClCompile Include="src\callback.c" />
+    <ClCompile Include="src\complete.c" />
+    <ClCompile Include="crypt.c" />
+    <ClCompile Include="src\date.c" />
+    <ClCompile Include="src\delete.c" />
+    <ClCompile Include="src\expr.c" />
+    <ClCompile Include="src\func.c" />
+    <ClCompile Include="src\hash.c" />
+    <ClCompile Include="src\insert.c" />
+    <ClCompile Include="src\legacy.c" />
+    <ClCompile Include="src\loadext.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\opcodes.c" />
+    <ClCompile Include="src\os.c" />
+    <ClCompile Include="src\os_os2.c" />
+    <ClCompile Include="src\os_unix.c" />
+    <ClCompile Include="src\os_win.c" />
+    <ClCompile Include="src\parse.c" />
+    <ClCompile Include="src\pragma.c" />
+    <ClCompile Include="src\prepare.c" />
+    <ClCompile Include="src\printf.c" />
+    <ClCompile Include="src\random.c" />
+    <ClCompile Include="src\select.c" />
+    <ClCompile Include="src\shell.c" />
+    <ClCompile Include="src\table.c" />
+    <ClCompile Include="src\tclsqlite.c" />
+    <ClCompile Include="src\tokenize.c" />
+    <ClCompile Include="src\trigger.c" />
+    <ClCompile Include="src\update.c" />
+    <ClCompile Include="src\utf.c" />
+    <ClCompile Include="src\util.c" />
+    <ClCompile Include="src\vacuum.c" />
+    <ClCompile Include="src\vdbe.c" />
+    <ClCompile Include="src\vdbeapi.c" />
+    <ClCompile Include="src\vdbeaux.c" />
+    <ClCompile Include="src\vdbefifo.c" />
+    <ClCompile Include="src\vdbemem.c" />
+    <ClCompile Include="src\vtab.c" />
+    <ClCompile Include="src\where.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\sqlite3.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\btree.h" />
+    <ClInclude Include="src\hash.h" />
+    <ClInclude Include="src\keywordhash.h" />
+    <ClInclude Include="src\opcodes.h" />
+    <ClInclude Include="src\os.h" />
+    <ClInclude Include="src\os_common.h" />
+    <ClInclude Include="src\pager.h" />
+    <ClInclude Include="src\parse.h" />
+    <ClInclude Include="..\include\sqlite\sqlite3.h" />
+    <ClInclude Include="src\sqlite3ext.h" />
+    <ClInclude Include="src\sqliteInt.h" />
+    <ClInclude Include="src\vdbe.h" />
+    <ClInclude Include="src\vdbeInt.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,40 @@
+// BaseOleLib.idl : BaseOleLib 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(BaseOleLib.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(557F9A93-6544-4AD1-A247-B53C5F958DB0),
+	dual,
+	nonextensible,
+	helpstring("IGifAnimate 接口"),
+	pointer_default(unique)
+]
+interface IGifAnimate : IDispatch{
+	[id(1), helpstring("method Play")] HRESULT Play();
+	[id(2), helpstring("add file")] HRESULT LoadFile(BSTR newVal, ULONG hParent);
+	[id(3), helpstring("add bitmap")] HRESULT LoadBitmap(ULONG hBitmap, ULONG hParent);
+};
+
+[
+	uuid(F2917F26-47A1-4AFF-AA72-2C694539D6DD),
+	version(1.0),
+	helpstring("BaseOleLib 1.0 类型库")
+]
+library BaseOleLibLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(23444ED6-2FFB-475A-B7FA-378A286AA613),
+		helpstring("GifAnimate Class")
+	]
+	coclass GifAnimate
+	{
+		[default] interface IGifAnimate;
+	};
+};

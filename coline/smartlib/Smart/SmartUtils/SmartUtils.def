@@ -1,0 +1,7 @@
+LIBRARY	"SmartUtils"
+
+EXPORTS
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE ; COM server deregistration
+    DllCanUnloadNow		PRIVATE 
+    DllGetClassObject   PRIVATE

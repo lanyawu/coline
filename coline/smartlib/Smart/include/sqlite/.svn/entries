@@ -1,0 +1,40 @@
+8
+
+dir
+1653
+http://svn.it168.com/it168im/branches/1.0/NewIM/include/sqlite
+http://svn.it168.com/it168im
+
+
+
+2008-10-06T07:07:21.850695Z
+613
+wuxz
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+769a8439-eb81-dc11-a1d4-001422184cc4
+
+sqlite3.h
+file
+
+
+
+
+2008-12-01T02:02:02.765625Z
+f774cd110fedc7454d8785635d254e06
+2008-10-06T07:07:21.850695Z
+613
+wuxz
+

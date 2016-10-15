@@ -1,0 +1,29 @@
+#ifndef __CRYPTO_H__
+#define __CRYPTO_H__
+
+#include <Commonlib/types.h>
+#include <Crypto/zlib.h>
+#include <Crypto/md5.h>
+
+//函数定义
+//16位CRC测试
+WORD CRC16(BYTE *ucbuf, int iLen, WORD wCRC);
+//32位CRC测试
+DWORD CRC32(BYTE *buf, int iLen, DWORD dwCRC32);
+
+//zlib压缩
+BOOL zlib_compress(BYTE **pDest, UINT32 *pDestLen, BYTE *pSrc, UINT32 SrcLen);
+
+//zlib 解压缩
+BOOL zlib_uncompress(BYTE *pDest, UINT32 *pDestLen, BYTE *pSrc, UINT32 SrcLen);
+
+//md5编码
+void md5_encode(const char *szInput, DWORD dwSize,  char *szResult);
+
+//md5编码文件
+bool md5_encodefile(const char *szFileName, char *szResult);
+//base64编码
+char * base64_encode(const char *lpInbuff, int nInSize, char *lpOutBuff);
+//base64解码
+void * base64_decode(const char *lpInBuff, void *lpOutBuff, int &nOutSize);
+#endif

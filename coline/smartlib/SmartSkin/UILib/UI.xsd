@@ -1,0 +1,1026 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="UIRoot">
+		<xs:annotation>
+			<xs:documentation>根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Images" minOccurs="0">
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>界面采用的图像列表</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="Image" type="Image类型" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="HintWindow" minOccurs="0">
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>Hint提示框窗体</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="Container" type="Container类型"/>
+						</xs:sequence>
+						<xs:attribute name="background" type="xs:int" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="FrameWindow" minOccurs="0">
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>所有窗体列表</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="Container" type="Container类型" maxOccurs="unbounded"/>
+						</xs:sequence>
+						<xs:attribute name="min" type="xs:int" use="required"/>
+						<xs:attribute name="max" type="xs:int" use="required"/>
+						<xs:attribute name="close" type="xs:int" use="required"/>
+						<xs:attribute name="restore" type="xs:int" use="required"/>
+						<xs:attribute name="background" type="xs:int" use="required"/>
+						<xs:attribute name="vscrollup" type="xs:int" use="required"/>
+						<xs:attribute name="vscrollbtn" type="xs:int" use="required"/>
+						<xs:attribute name="vscrolldown" type="xs:int" use="required"/>
+						<xs:attribute name="hscrollleft" type="xs:int" use="required"/>
+						<xs:attribute name="hscrollbtn" type="xs:int" use="required"/>
+						<xs:attribute name="hscrollright" type="xs:int" use="required"/>
+						<xs:attribute name="msgdlgbkg" type="xs:int" use="required"/>
+						<xs:attribute name="msgdlgerror" type="xs:int" use="required"/>
+						<xs:attribute name="msgdlginfo" type="xs:int" use="required"/>
+						<xs:attribute name="msgdlgsucc" type="xs:int" use="required"/>
+						<xs:attribute name="msgdlgquest" type="xs:int" use="required"/>
+						<xs:attribute name="basecolor" type="color" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Menus" minOccurs="0">
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>菜单定制列表</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="Container" type="Container类型" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+						<xs:attribute name="menucheck" type="xs:int" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ToolWindow" minOccurs="0">
+					<xs:complexType>
+						<xs:annotation>
+							<xs:documentation>工具栏窗口列表</xs:documentation>
+						</xs:annotation>
+						<xs:sequence>
+							<xs:element name="Container" type="Container类型" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="color">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="#[a-zA-Z0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Image类型">
+		<xs:annotation>
+			<xs:documentation>图片描述</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Image" type="Image类型" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="id" type="xs:int" use="required"/>
+		<xs:attribute name="subcount" type="xs:int" use="optional" default="1"/>
+		<xs:attribute name="layout" use="optional" default="vertical">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="vertical"/>
+					<xs:enumeration value="horizontal"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="transcolor" type="color" use="optional"/>
+		<xs:attribute name="path" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="1"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Dialog类型">
+		<xs:annotation>
+			<xs:documentation>对话框</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Container" type="Container类型" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Control类型" abstract="true">
+		<xs:annotation>
+			<xs:documentation>控件的基类型</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="pos" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="text" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="255"/>
+					<xs:minLength value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="enabled" type="xs:boolean" use="optional" default="true"/>
+		<xs:attribute name="visible" type="xs:boolean" use="optional" default="true"/>
+		<xs:attribute name="tooltip" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="255"/>
+					<xs:minLength value="0"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="tipstyle" type="xs:int" use="optional"/>
+		<xs:attribute name="shortcut" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="inset" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="0"/>
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="border" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="Container类型" abstract="true">
+		<xs:annotation>
+			<xs:documentation>容器的基础类</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:sequence>
+					<xs:element name="Container" type="Container类型" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Control" type="Control类型" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="padding" type="xs:int" use="optional"/>
+				<xs:attribute name="seq" type="xs:int" use="optional"/>
+				<xs:attribute name="plugin" type="xs:boolean" use="optional"/>
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+				<xs:attribute name="style" type="xs:string" use="optional"/>
+				<xs:attribute name="background" type="color" use="optional"/>
+				<xs:attribute name="scrollbar" use="optional" default="both">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="vertical"/>
+							<xs:enumeration value="horizontal"/>
+							<xs:enumeration value="both"/>
+							<xs:enumeration value="neither"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Canvas">
+		<xs:annotation>
+			<xs:documentation>容器-背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="watermark" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:int"/>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DialogLayout">
+		<xs:annotation>
+			<xs:documentation>容器-对话框的层次</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DropDownBox">
+		<xs:annotation>
+			<xs:documentation>容器-复选框</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="editable" type="xs:boolean" use="optional"/>
+				<xs:attribute name="image" type="xs:int" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ScintillaEdit">
+		<xs:annotation>
+			<xs:documentation>scintillaEdit编辑器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="keyword" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="0"/>
+							<xs:maxLength value="1024"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="commentcolor" type="color" use="optional"/>
+				<xs:attribute name="commentlinecolor" type="color" use="optional"/>
+				<xs:attribute name="commentdoccolor" type="color" use="optional"/>
+				<xs:attribute name="numbercolor" type="color" use="optional"/>
+				<xs:attribute name="stringcolor" type="color" use="optional"/>
+				<xs:attribute name="charactercolor" type="color" use="optional"/>
+				<xs:attribute name="uuidcolor" type="color" use="optional"/>
+				<xs:attribute name="operatorcolor" type="color" use="optional"/>
+				<xs:attribute name="preprocessorcolor" type="color" use="optional"/>
+				<xs:attribute name="wordcolor" type="color" use="optional"/>
+				<xs:attribute name="backcolor" type="color" use="optional"/>
+				<xs:attribute name="forecolor" type="color" use="optional"/>
+				<xs:attribute name="lexer" use="optional" default="cpp">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="cpp"/>
+							<xs:enumeration value="python"/>
+							<xs:enumeration value="html"/>
+							<xs:enumeration value="xml"/>
+							<xs:enumeration value="perl"/>
+							<xs:enumeration value="sql"/>
+							<xs:enumeration value="vb"/>
+							<xs:enumeration value="makefile"/>
+							<xs:enumeration value="batch"/>
+							<xs:enumeration value="pascal"/>
+							<xs:enumeration value="lisp"/>
+							<xs:enumeration value="ruby"/>
+							<xs:enumeration value="tcl"/>
+							<xs:enumeration value="vbscript"/>
+							<xs:enumeration value="matlab"/>
+							<xs:enumeration value="asm"/>
+							<xs:enumeration value="fortran"/>
+							<xs:enumeration value="css"/>
+							<xs:enumeration value="mssql"/>
+							<xs:enumeration value="phpscript"/>
+							<xs:enumeration value="smalltalk"/>
+							<xs:enumeration value="innosetup"/>
+							<xs:enumeration value="cmake"/>
+							<xs:enumeration value="gap"/>
+							<xs:enumeration value="plm"/>
+							<xs:enumeration value="progress"/>
+							<xs:enumeration value="abaqus"/>
+							<xs:enumeration value="asymptote"/>
+							<xs:enumeration value="cobol"/>
+							<xs:enumeration value="magik"/>
+							<xs:enumeration value="powershell"/>
+							<xs:enumeration value="mysql"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="HorizontalLayout">
+		<xs:annotation>
+			<xs:documentation>容器-水平层次</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="StatusBar">
+		<xs:annotation>
+			<xs:documentation>容器-状态栏</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TabFolder">
+		<xs:annotation>
+			<xs:documentation>容器-tab页面的容器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="select" type="xs:boolean" use="optional"/>
+				<xs:attribute name="tabalign" use="optional" default="top">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="top"/>
+							<xs:enumeration value="left"/>
+							<xs:enumeration value="right"/>
+							<xs:enumeration value="bottom"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="roundrect" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TabPage">
+		<xs:annotation>
+			<xs:documentation>容器-tab页面</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ToolBar">
+		<xs:annotation>
+			<xs:documentation>容器-工具条</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="HorizontalLayout"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TileLayout">
+		<xs:annotation>
+			<xs:documentation>容器-。。。。</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="VerticalLayout">
+		<xs:annotation>
+			<xs:documentation>容器-垂直层次</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ControlCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-控件背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Canvas"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DialogCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-对话框背景</xs:documentation>
+		</xs:annotation>
+	</xs:complexType>
+	<xs:complexType name="ImageCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-带图片的背景容器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Canvas">
+				<xs:attribute name="image" type="xs:int" use="required"/>
+				<xs:attribute name="topleft_width" type="xs:int" use="optional"/>
+				<xs:attribute name="topright_width" type="xs:int" use="optional"/>
+				<xs:attribute name="top_height" type="xs:int" use="optional"/>
+				<xs:attribute name="botleft_width" type="xs:int" use="optional"/>
+				<xs:attribute name="botright_width" type="xs:int" use="optional"/>
+				<xs:attribute name="bot_height" type="xs:int" use="optional"/>
+				<xs:attribute name="center_left_width" type="xs:int" use="optional"/>
+				<xs:attribute name="center_right_width" type="xs:int" use="optional"/>
+				<xs:attribute name="imageinset" type="xs:int" use="optional"/>
+				<xs:attribute name="fixedcorner" type="xs:int" use="optional" default="0"/>
+				<xs:attribute name="stretchmode" use="optional" default="normal">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="normal"/>
+							<xs:enumeration value="fix4corners"/>
+							<xs:enumeration value="horizontal"/>
+							<xs:enumeration value="vertical"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ImageTabFolder">
+		<xs:annotation>
+			<xs:documentation>扩展容器-支持图片类型的tab页标</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="TabFolder">
+				<xs:attribute name="tabwidth" type="xs:int" use="optional"/>
+				<xs:attribute name="tabheight" type="xs:int" use="optional"/>
+				<xs:attribute name="backimage" type="xs:int" use="optional"/>
+				<xs:attribute name="taboffset" type="xs:int" use="optional" default="0"/>
+				<xs:attribute name="bordercolor" type="color" use="optional"/>
+				<xs:attribute name="tabbtnwidthbypagetext" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ImageTabPage">
+		<xs:annotation>
+			<xs:documentation>扩展容器-支持图片类型的页标</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="TabPage">
+				<xs:attributeGroup ref="ImageInfo"/>
+				<xs:attribute name="tabbutton_tooltip" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="List">
+		<xs:annotation>
+			<xs:documentation>扩展容器-列表</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="VerticalLayout">
+				<xs:attribute name="header" use="optional" default="show">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="show"/>
+							<xs:enumeration value="hidden"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="footer" use="optional" default="show">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="show"/>
+							<xs:enumeration value="hidden"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="expanding" type="xs:boolean" use="optional" default="true"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListFooter">
+		<xs:annotation>
+			<xs:documentation>扩展容器-list（列表）的foot</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="HorizontalLayout"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListHeader">
+		<xs:annotation>
+			<xs:documentation>扩展容器-list（列表）的head</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="HorizontalLayout"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NavigatorPanel">
+		<xs:annotation>
+			<xs:documentation>扩展容器-可以容纳跳转按钮的面板</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="VerticalLayout"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SearchTitlePanel">
+		<xs:annotation>
+			<xs:documentation>扩展容器-搜索面板</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="HorizontalLayout">
+				<xs:attribute name="image" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="0"/>
+							<xs:maxLength value="255"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TabFolderCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-tab页面的背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Canvas"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TaskPanel">
+		<xs:annotation>
+			<xs:documentation>扩展容器-任务面板（带标题栏、客户区域等）</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WhiteCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-白色背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Canvas">
+				<xs:attribute name="bordercolor" type="color" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WindowCanvas">
+		<xs:annotation>
+			<xs:documentation>扩展容器-window默认背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Canvas"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ActiveXCtrl">
+		<xs:annotation>
+			<xs:documentation>基础控件-ActiveX控件</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="clsid" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="0"/>
+							<xs:maxLength value="255"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Button">
+		<xs:annotation>
+			<xs:documentation>基础控件-按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="background" type="xs:int" use="optional"/>
+				<xs:attribute name="align" use="optional" default="left">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="left"/>
+							<xs:enumeration value="right"/>
+							<xs:enumeration value="center"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FadedLine">
+		<xs:annotation>
+			<xs:documentation>基础控件-渐进线</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GreyTextHeader">
+		<xs:annotation>
+			<xs:documentation>基础控件-。。。。</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ImagePanel">
+		<xs:annotation>
+			<xs:documentation>基础控件-图片</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="image" type="xs:string" use="required"/>
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+				<xs:attribute name="subimageindex" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LabelPanel">
+		<xs:annotation>
+			<xs:documentation>基础控件-标题</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="horizonalign" use="optional" default="left">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="left"/>
+							<xs:enumeration value="right"/>
+							<xs:enumeration value="center"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="vertalign" use="optional" default="vcenter">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="top"/>
+							<xs:enumeration value="vcenter"/>
+							<xs:enumeration value="bottom"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="textColor" type="color" use="optional"/>
+				<xs:attribute name="backColor" type="color" use="optional"/>
+				<xs:attribute name="bold" type="xs:boolean" use="optional"/>
+				<xs:attribute name="autoestimatesize" type="xs:boolean" use="optional"/>
+				<xs:attribute name="end_ellipsis" type="xs:boolean" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListElement" abstract="true">
+		<xs:annotation>
+			<xs:documentation>基础控件-list的表格元素（不可实例化）</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="selected" type="xs:boolean" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListHeaderItem">
+		<xs:annotation>
+			<xs:documentation>基础控件-。。。。</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListHeaderShadow">
+		<xs:annotation>
+			<xs:documentation>基础控件-列表头的阴影</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MultiLineEdit">
+		<xs:annotation>
+			<xs:documentation>基础控件-多行文本编辑器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OptionBox">
+		<xs:annotation>
+			<xs:documentation>基础控件-checkbox</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="align" use="optional" default="left">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="left"/>
+							<xs:enumeration value="right"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="selected" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+				<xs:attributeGroup ref="ImageInfo"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PaddingPanel">
+		<xs:annotation>
+			<xs:documentation>基础控件-。。。。</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RichEdit2">
+		<xs:annotation>
+			<xs:documentation>基础控件-rich edit</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="aspect" use="optional" default="vertical">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="vertical"/>
+							<xs:enumeration value="horizontal"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="autodetectlink" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="transparent" type="xs:boolean" use="optional" default="true"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SeparatorLine">
+		<xs:annotation>
+			<xs:documentation>基础控件-分隔线</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SingleLineEdit">
+		<xs:annotation>
+			<xs:documentation>基础控件-单行文本编辑器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+				<xs:attribute name="password" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="readonly" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="textlimit" type="xs:int" use="optional"/>
+				<xs:attribute name="textColor" type="color" use="optional"/>
+				<xs:attribute name="byteslimit" type="xs:int" use="optional"/>
+				<xs:attribute name="readonlytextclr" type="color" use="optional"/>
+				<xs:attribute name="enablelink" type="xs:boolean" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TitleShadow">
+		<xs:annotation>
+			<xs:documentation>基础控件-标题栏的暗影</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ToolButton">
+		<xs:annotation>
+			<xs:documentation>基础控件-工具条按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ToolGripper">
+		<xs:annotation>
+			<xs:documentation>基础控件-工具条的拖动钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ToolSeparator">
+		<xs:annotation>
+			<xs:documentation>基础控件-工具条上的分隔符</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ToolbarTitlePanel">
+		<xs:annotation>
+			<xs:documentation>基础控件-。。。。</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Control类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ImageButton">
+		<xs:annotation>
+			<xs:documentation>扩展控件-图片按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Button">
+				<xs:attributeGroup ref="StretchInfo"/>
+				<xs:attributeGroup ref="ImageInfo"/>
+				<xs:attribute name="vertimageinset" type="xs:int" use="optional"/>
+				<xs:attribute name="horizonimageinset" type="xs:int" use="optional"/>
+				<xs:attribute name="bottom" type="xs:boolean" use="optional"/>
+				<xs:attribute name="floatimageshrink" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PlusImageButton">
+		<xs:annotation>
+			<xs:documentation>扩展控件-图片按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Button">
+				<xs:attribute name="normal" type="xs:int" use="required"/>
+				<xs:attribute name="image" type="xs:int" use="required"/>
+				<xs:attribute name="hot" type="xs:int" use="required"/>
+				<xs:attribute name="pushed" type="xs:int" use="required"/>
+				<xs:attribute name="gray" type="xs:int" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListExpandElement">
+		<xs:annotation>
+			<xs:documentation>扩展控件-可展开的list表格元素</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ListTextElement"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListLabelElement">
+		<xs:annotation>
+			<xs:documentation>扩展控件-list的表格元素</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ListElement">
+				<xs:attribute name="align" use="optional" default="left">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="left"/>
+							<xs:enumeration value="right"/>
+							<xs:enumeration value="center"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ListTextElement">
+		<xs:annotation>
+			<xs:documentation>扩展控件-list的表格元素</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ListLabelElement"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MenuButton">
+		<xs:annotation>
+			<xs:documentation>扩展控件-带有下拉菜单的按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ImageButton">
+				<xs:attribute name="height" type="xs:int" use="optional"/>
+				<xs:attribute name="menu" type="xs:string" use="optional"/>
+				<xs:attribute name="bordercolor" type="color" use="optional"/>
+				<xs:attribute name="displaymenutext" type="xs:boolean" use="optional" default="false"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MenuItem">
+		<xs:annotation>
+			<xs:documentation>扩展控件-菜单条目，可以容纳子菜单（MenuList）</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ListElement">
+				<xs:attributeGroup ref="ImageInfo"/>
+				<xs:attribute name="uid" type="xs:int" use="required"/>
+				<xs:attribute name="submenu" type="xs:string" use="optional"/>
+				<xs:attribute name="line" type="xs:boolean" use="optional"/>
+				<xs:attribute name="seq" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NavigatorButton">
+		<xs:annotation>
+			<xs:documentation>扩展控件-跳转功能按钮</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ListElement"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TextPanel">
+		<xs:annotation>
+			<xs:documentation>扩展控件-带文本的标题</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="LabelPanel">
+				<xs:attribute name="singleline" type="xs:boolean" use="optional"/>
+				<xs:attribute name="enablelinks" type="xs:boolean" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CheckBox">
+		<xs:annotation>
+			<xs:documentation>选择框</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="OptionBox"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WarningPanel">
+		<xs:annotation>
+			<xs:documentation>扩展控件-警告面板</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="TextPanel">
+				<xs:attribute name="type" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="error"/>
+							<xs:enumeration value="warning"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MenuList">
+		<xs:annotation>
+			<xs:documentation>容器-菜单</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SlideFolder">
+		<xs:annotation>
+			<xs:documentation>容器-滑块页容器</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="maxslidestep" type="xs:int" use="optional" default="4"/>
+				<xs:attribute name="buttonheight" type="xs:int" use="optional" default="10"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SlidePage">
+		<xs:annotation>
+			<xs:documentation>容器-滑块页</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attributeGroup ref="ImageInfo"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TreeView">
+		<xs:annotation>
+			<xs:documentation>容器-树</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Container类型">
+				<xs:attribute name="groupimageid" type="xs:int" use="required"/>
+				<xs:attribute name="defaultimageid" type="xs:int" use="required"/>
+				<xs:attribute name="busyimageid" type="xs:int" use="optional"/>
+				<xs:attribute name="leaveimageid" type="xs:int" use="optional"/>
+				<xs:attribute name="icontype" type="xs:string" use="optional"/>
+				<xs:attribute name="groupmenu" type="xs:string" use="optional"/>
+				<xs:attribute name="leafmenu" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GifImagePanel">
+		<xs:complexContent>
+			<xs:extension base="Control类型">
+				<xs:attribute name="image" type="xs:string" use="required"/>
+				<xs:attribute name="width" type="xs:int" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="GifGridPanel">
+		<xs:complexContent>
+			<xs:extension base="Container类型"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TipEdit">
+		<xs:complexContent>
+			<xs:extension base="SingleLineEdit">
+				<xs:attribute name="tiptext" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:attributeGroup name="ImageInfo">
+		<xs:annotation>
+			<xs:documentation>属性组-指定图片的信息</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="image" type="xs:int" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="StretchInfo">
+		<xs:attribute name="fixedcorner" type="xs:int" use="optional" default="0"/>
+	</xs:attributeGroup>
+</xs:schema>

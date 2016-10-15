@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UIRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".\UI.xsd">
+    <!-- 所有Image列表-->	
+	<Images>
+		<Image name="min" path="./" id="1"></Image>
+	</Images>
+    <!-- 所有frame窗口 -->
+	<FrameWindow>
+		<!-- 窗口的背景画布 -->
+		<Container xsi:type="ImageCanvas" name="canvas" image="11" topleft_width="200" topright_width="40" top_height="250" botleft_width="20" botright_width="20" bot_height="20" center_left_width="10" center_right_width="10">
+			<!-- 画布只允许一个子控件（程序逻辑上），无特别用处 -->
+			<Container xsi:type="VerticalLayout">
+				<!-- 标题栏 -->
+				<Container xsi:type="VerticalLayout" name="caption" height="30">
+					<!-- 响应改变大小操作的区域，逻辑边框 -->
+					<Container xsi:type="HorizontalLayout" height="3"/>
+					<!-- 程序logo， 标题， 按钮 -->
+					<Container xsi:type="HorizontalLayout"><!-- height=27 -->
+						<Container xsi:type="HorizontalLayout" width="7"/>
+						<!-- logo -->
+						<Container xsi:type="VerticalLayout" width="40">
+							<Control xsi:type="PaddingPanel" name="dragarea"/>
+							<Control xsi:type="ImagePanel" name="dragarea" image="1"/>
+						</Container>
+						<Container xsi:type="VerticalLayout">
+							<Container xsi:type="VerticalLayout" name="dragarea" height="5"/>
+							<!-- 标题、按钮 -->
+							<Container xsi:type="HorizontalLayout">
+								<!-- 标题文字 -->
+								<Control xsi:type="LabelPanel" name="dragarea" textColor="#FFFFFF"/>
+								<Control xsi:type="PaddingPanel" name="dragarea"/>
+								<!-- 按钮区域 -->
+								<Control xsi:type="ImageButton" name="minbutton" image="3"/>
+								<Control xsi:type="ImageButton" name="maxbutton" image="4"/>
+								<Control xsi:type="ImageButton" name="closebutton" image="5"/>
+								<Control xsi:type="PaddingPanel" width="9"/>
+							</Container>
+						</Container>
+					</Container>
+				</Container>					
+				<!-- 标题栏end -->
+				
+				<!-- 客户区域：包含各个独立窗口的客户区 -->
+				
+				<!-- 登陆界面客户区域 -->
+				<Container xsi:type="HorizontalLayout" name="LogonWindow">
+					<!-- 左边的自动缩进区域：对话框左右拉伸时，此区域拉伸 -->
+					<Container xsi:type="HorizontalLayout"/>
+					<!-- 界面中间控件的容器，在对话框改变大小的时候，保证控件的相对位置不变 -->
+					<Container xsi:type="VerticalLayout" width="217">
+						<!-- 客户区上部的固定间隔区：头像上部 -->
+						<Container xsi:type="HorizontalLayout" height="33"/>
+						<!--logon、用户输入控件、登陆按钮等的容器，保证对话框大 -->
+						<!-- 小改变时这部分控件的相对位置不变 -->
+						<Container xsi:type="VerticalLayout" height="353">
+							<!-- 大logo -->
+							<Container xsi:type="HorizontalLayout" height="113">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="ImagePanel" image="2" width="112"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout" height="22"/>
+							<!-- 用户名、密码等的输入区域 -->
+							<Container xsi:type="HorizontalLayout" height="89">
+								<!-- 文本提示区域 -->
+								<Container xsi:type="VerticalLayout" width="51"><!-- bold style nedded TBD -->
+									<Container xsi:type="HorizontalLayout" height="20">
+										<Control xsi:type="LabelPanel" text="登陆名" textColor="#468c"/>	
+									</Container>
+									<Container xsi:type="HorizontalLayout"/>
+									<Container xsi:type="HorizontalLayout" height="20">
+										<Control xsi:type="LabelPanel" text="密   码" textColor="#468c"/>
+									</Container>
+									<Container xsi:type="HorizontalLayout"/>
+									<Container xsi:type="HorizontalLayout" height="20">
+										<Control xsi:type="LabelPanel" text="状   态" textColor="#468c" />
+									</Container>
+								</Container>
+								<!-- 输入区域 -->
+								<Container xsi:type="VerticalLayout" width="106">
+									<Container xsi:type="DropDownBox" height="20" name="cb_username" image="10" editable="true"/>
+									<Container xsi:type="HorizontalLayout" height="14"/>
+									<Container xsi:type="HorizontalLayout" height="20">
+										<Control xsi:type="SingleLineEdit" name="edit_password" password="true"/>
+									</Container>
+									<Container xsi:type="HorizontalLayout" height="14"/>
+									<Container xsi:type="DropDownBox" height="20" name="cb_logonstatus" image="10">
+										<Control xsi:type="ListLabelElement" name="ls_hidden" text="隐身"/>
+										<Control xsi:type="ListLabelElement" name="ls_online" text="在线"/>
+										<Control xsi:type="ListLabelElement" name="ls_away" text="离开"/>
+									</Container>
+								</Container>
+								<!-- 右侧的输入区域 -->
+								<Container xsi:type="VerticalLayout">
+									<Container xsi:type="HorizontalLayout" height="1"/>
+									<Container xsi:type="HorizontalLayout" height="18">
+										<Control xsi:type="PaddingPanel" width="7"/>
+										<Control xsi:type="ImageButton" image="8" name="clearusernamebtn"/>
+										<Control xsi:type="PaddingPanel"/>
+									</Container>
+									<Container xsi:type="HorizontalLayout" height="15"/>
+									<Container xsi:type="HorizontalLayout" height="20">
+										<Control xsi:type="PaddingPanel" width="4"/>
+										<Control xsi:type="TextPanel" name="forgetpwd" text="忘记密码？" textColor="#468c" horizonalign="center" vertalign="vcenter" singleline="true"/>
+										<Control xsi:type="PaddingPanel"/>
+									</Container>
+									<Container xsi:type="HorizontalLayout"/>
+								</Container>
+							</Container>
+							<Container xsi:type="HorizontalLayout" height="15"/>
+							<!-- 登陆的个性化配置:记住密码、自动登录 -->
+							<Container xsi:type="HorizontalLayout" height="40">
+								<Container xsi:type="HorizontalLayout"/>
+								<Container xsi:type="VerticalLayout" width="75">
+									<Control xsi:type="OptionBox" name="rememberpwd" text="&lt;c #468c&gt;记住密码&lt;/c&gt;" image="9" height="17"/>
+									<Control xsi:type="PaddingPanel" height="6"/>
+									<Control xsi:type="OptionBox" name="autologon" text="&lt;c #468c&gt;自动登陆&lt;/c&gt;" image="9"/>
+								</Container>
+								<Container xsi:type="HorizontalLayout"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout" height="8"/>
+							<!-- 常用设置 -->
+							<Container xsi:type="HorizontalLayout" height="20">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="TextPanel" name="settings" text="常用设置" textColor="#468c" width="60" horizonalign="center" singleline="true"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout" height="8"/>
+							<!-- 登陆按钮 -->
+							<Container xsi:type="HorizontalLayout" height="37">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="ImageButton" name="logonbutton" image="6"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+						</Container>
+						<!-- 中间的可拉伸区域（“登陆按钮下面”）-->
+						<!-- 固定间隔区域：对话框大小改变时（垂直方向），这个区域拉伸 -->
+						<Container xsi:type="VerticalLayout"/>
+						<!-- 新手教程、注册、公司主页等 -->
+						<Container xsi:type="VerticalLayout" height="75">
+							<Container xsi:type="HorizontalLayout" height="23">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="ImageButton" name="register" image="7"/>
+								<Control xsi:type="PaddingPanel" width="5"/>
+								<Control xsi:type="TextPanel" name="reference" text="新手教程" textColor="#468c" vertalign="vcenter" singleline="true" width="50"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout"/>
+							<Container xsi:type="HorizontalLayout" height="12">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="ImageButton" name="companyhome" image="29"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout" height="7"/>
+						</Container>
+					</Container>
+					<!-- 右边的自动缩进区域：对话框左右拉伸时，此区域拉伸 -->
+					<Container xsi:type="HorizontalLayout"/>
+				</Container>
+				<!-- 主界面客户区域 -->
+				<Container xsi:type="HorizontalLayout" name="MainWindow">
+					<!-- 左边的固定区域：对话框左右拉伸时，此区域不会变化 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>
+					<!-- 中间控件容器：界面拉伸时此部分会拉伸 -->
+					<Container xsi:type="VerticalLayout">
+						<!-- 头像上方与标题栏的间隔 -->
+						<Container xsi:type="HorizontalLayout" height="7"/>
+						<!-- 头像、在线状态等的显示区域 -->
+						<Container xsi:type="HorizontalLayout" height="74">
+							<!-- 头像 -->
+							<Container xsi:type="HorizontalLayout" width="74">
+								<Control xsi:type="ImageButton" image="14"/>
+							</Container>
+							<!-- 个人状态显示区域 -->
+							<Container xsi:type="VerticalLayout">
+								<!-- 姓名及在线状态 显示 -->
+								<Container xsi:type="HorizontalLayout" height="17">
+									<Control xsi:type="PaddingPanel" width="5"/>
+									<Control xsi:type="LabelPanel" name="userinfo" text="个人信息" textColor="#FFFFFF"/>
+									<Control xsi:type="MenuButton" name="onlinestatus" image="13" menu="OnlineStatusMenu" width="50" displaymenutext="true"/>
+									<Control xsi:type="PaddingPanel"/>
+								</Container>
+								<!-- “编辑个性签名”-->
+								<Container xsi:type="HorizontalLayout" height="17">
+									<Control xsi:type="PaddingPanel" width="10"/>
+									<Control xsi:type="TextPanel" name="editinfo" text="编辑个性签名" textColor="#FFFFFF"/>
+								</Container>
+								<!-- 固定间隔区 -->
+								<Container xsi:type="HorizontalLayout"/>
+								<!-- 系统菜单 -->
+								<Container xsi:type="HorizontalLayout" height="22">
+									<Control xsi:type="PaddingPanel"/>
+									<Control xsi:type="ImageButton" name="systemmenu" image="15"/>
+								</Container>
+							</Container>
+						</Container>
+						<!-- 头像和搜索部分的固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="6"/>
+						<!-- 搜索部分 -->
+						<Container xsi:type="HorizontalLayout" height="30">
+							<Container xsi:type="ImageCanvas" image="31" topleft_width="8" top_height="8" topright_width="8" bot_height="8" botleft_width="8" botright_width="8" center_left_width="8" center_right_width="8" inset="5">
+								<Control xsi:type="TipEdit" tiptext="输入汉字或简拼查找好友、同事..." border="false"/>
+							</Container>
+							<Control xsi:type="ImageButton" name="searchbutton" image="16" width="35"/>
+						</Container>
+						<!-- 搜索部分和联系人的固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="3"/>
+						<!-- 联系人等部分 -->
+						<Container xsi:type="ImageTabFolder" tabalign="left" tabwidth="33" tabheight="38" taboffset="2" roundrect="6">
+							<!-- 联系人等 -->
+							<Container xsi:type="ImageTabPage" image="18" inset="2">
+								<Container xsi:type="ImageTabFolder" tabalign="top" border="false"  tabheight="24" padding="1">
+									<!-- 联系人 -->
+									<Container xsi:type="ImageTabPage" image="28" text="联系人">
+										<Container xsi:type="SlideFolder" buttonheight="20" maxslidestep="4">
+											<Container xsi:type="SlidePage" image="27" text="好友">
+												<Container xsi:type="VerticalLayout">
+													<Container xsi:type="HorizontalLayout" height="18">
+														<Control xsi:type="ImagePanel" image="30"/>
+														<Control xsi:type="PaddingPanel" width="5"/>
+														<Control xsi:type="TextPanel" text="了解客户体验计划的更多信息" name="customer_taste" textColor="#0000FF"/>
+													</Container>
+													<Container xsi:type="HorizontalLayout" height="3"/>
+													<Container xsi:type="HorizontalLayout" height="16">
+														<Control xsi:type="ImageButton" image="17" name="addfriendbutton"/>
+														<Control xsi:type="TextPanel" text="添加好友或群" textColor="#0251A2"/>
+													</Container>
+													<Container xsi:type="HorizontalLayout" height="3"/>
+													<Container xsi:type="TreeView" name="friendtree" border="false" text="我的好友"/>
+												</Container>
+											</Container>
+											<Container xsi:type="SlidePage" image="27" text="推荐渠道">
+												<Container xsi:type="TreeView" name="channeltree" border="false"/>
+											</Container>
+											<Container xsi:type="SlidePage" image="27" text="推送同行">
+												<Control xsi:type="PaddingPanel"/>
+											</Container>
+										</Container>
+									</Container>
+									<!-- 同事 -->
+									<Container xsi:type="ImageTabPage" image="28" text="同事">
+										<Container xsi:type="TreeView" name="colleaguetree" text="同事列表" border="false"/>
+									</Container>
+									<!-- 群 -->
+									<Container xsi:type="ImageTabPage" image="28" text="群">
+										<Container xsi:type="TreeView" name="grouptree" border="false"/>
+									</Container>
+									<!-- 最近联系人 -->
+									<Container xsi:type="ImageTabPage" image="28" text="最近联系">
+										<Container xsi:type="TreeView" name="recentlycontactortree" border="false"/>
+									</Container>
+								</Container>
+							</Container>
+							<!-- 主页链接 -->
+							<Container xsi:type="ImageTabPage" image="19">
+							</Container>
+							<!-- 管理页面 -->
+							<Container xsi:type="ImageTabPage" image="20"/>
+							<!-- msn主页 -->
+							<Container xsi:type="ImageTabPage" image="21"/>
+						</Container>
+						<!-- 广告及渠道的搜索部分 -->
+						<Container xsi:type="TabFolder" height="80">
+							<Container xsi:type="TabPage" text="广告"/>
+							<Container xsi:type="TabPage" text="找公司"/>
+							<Container xsi:type="TabPage" text="找报价"/>
+							<Container xsi:type="TabPage" text="找人"/>
+							<Container xsi:type="TabPage" text="发布"/>
+						</Container>
+						<!-- 公司网址 -->
+						<Container xsi:type="HorizontalLayout" height="10"/>
+						<Container xsi:type="HorizontalLayout" height="12">
+							<Control xsi:type="PaddingPanel"/>
+							<Control xsi:type="ImageButton" name="companyhome" image="29"/>
+							<Control xsi:type="PaddingPanel"/>
+						</Container>
+						<Container xsi:type="HorizontalLayout" height="7"/>
+					</Container>
+					<!-- 右边的固定区域：对话框左右拉伸时，此区域不会变化 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>
+				</Container>
+				<!-- 聊天界面、访客聊天客户区，这两个界面只是在功能按钮部分有区别 -->
+				<Container xsi:type="HorizontalLayout" name="ChatWindow">
+					<Container xsi:type="HorizontalLayout" width="7"/>
+					<Container xsi:type="VerticalLayout">
+						<!-- 传送文件、邀请讨论等功能按钮和广告栏位 -->
+						<Container xsi:type="HorizontalLayout" height="45">
+							<Control xsi:type="PaddingPanel" width="12"/>
+							<Control xsi:type="ImageButton" image="36" name="filetransfer" text="传送文件"/>
+							<Control xsi:type="ImageButton" image="37" name="invitation" text="邀请讨论"/>
+							<Control xsi:type="ImageButton" image="38" name="sendemail" text="发送邮件"/>
+							<Control xsi:type="ImageButton" image="39" name="chathistory" text="聊天记录"/>
+							<Control xsi:type="ImageButton" image="44" vertimageinset="25" bottom="true"/>
+							<Control xsi:type="PaddingPanel"/>
+							<Control xsi:type="ImagePanel" image="1" width="175"/>
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="2"/>
+						<!-- 聊天及名片简介区域 -->
+						<Container xsi:type="HorizontalLayout">
+							<!-- 聊天区域 -->
+							<Container xsi:type="VerticalLayout">
+								<!-- 消息显示区域 -->
+								<Container xsi:type="ImageCanvas" image="45" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false">
+									<Container xsi:type="VerticalLayout">
+										<!-- 好友信息显示 -->
+										<Container xsi:type="HorizontalLayout" height="26" inset="3">
+											<Control xsi:type="ImageButton" image="51"/><!-- TBD -->
+											<Control xsi:type="PaddingPanel" width="5"/>
+											<Control xsi:type="LabelPanel" name="statustext" text="placeholder" textColor="#393939" width="150"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ImageButton" name="netpolice" image="50" vertimageinset="1"/>
+										</Container>
+										
+										<Container xsi:type="HorizontalLayout" height="1"/>
+										
+										<!-- 客户体验 -->
+										<Container xsi:type="ImageCanvas" name="customtastecontainer" image="52" height="24" topleft_width="4" topright_width="4" top_height="4" botleft_width="4" botright_width="4" bot_height="4" center_left_width="4" center_right_width="4" border="false" imageinset="1" inset="2">
+											<Container xsi:type="HorizontalLayout">
+												<Control xsi:type="PaddingPanel" width="9"/>
+												<Control xsi:type="ImagePanel" image="30"/>
+												<Control xsi:type="PaddingPanel" width="5"/>
+												<Control xsi:type="LabelPanel" name="customtaste" text="客户体验"/>
+												<Control xsi:type="PaddingPanel"/>
+												<Control xsi:type="ImageButton" name="closecustomtaste" image="53" vertimageinset="4"/>
+												<Control xsi:type="PaddingPanel" width="9"/>
+											</Container>
+										</Container>
+										<!-- 消息显示框：TBD readonly， noborder-->
+										<Control xsi:type="RichEdit2" name="messagedisplay" border="false"/>
+									</Container>
+								</Container>
+								<!-- 固定间隔 -->
+								<Container xsi:type="HorizontalLayout" height="7"/>
+								<!-- 消息编辑区域 -->
+								<Container xsi:type="ImageCanvas" image="46" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false" height="145">
+									<Container xsi:type="VerticalLayout">
+										<!-- 信息编辑帮助工具条 -->
+										<Container xsi:type="ToolBar" height="28" inset="7" padding="5" border="false">
+											<Control xsi:type="ImageButton" image="54" name="facebutton"/>
+											<Control xsi:type="ImageButton" image="55" name="fontbutton"/>
+											<Control xsi:type="MenuButton" image="56" menu="ScreenShot"/>
+											<Control xsi:type="MenuButton" image="57" menu="DefReply"/>
+											<Control xsi:type="ImageButton" image="58" name="calcbutton"/>
+											<Control xsi:type="ImageButton" image="59" name="notebookbutton"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ToolSeparator"/>
+											<Control xsi:type="ImageButton" image="60" name="toolbardownarrow" vertimageinset="5"/>
+										</Container>
+										<!-- 文本编辑区 -->
+										<Container xsi:type="HorizontalLayout">
+											<Container xsi:type="HorizontalLayout">
+												<Control xsi:type="RichEdit2" name="messageedit" border="false"/>
+											</Container>
+											<Container xsi:type="VerticalLayout" width="62">
+												<Control xsi:type="PaddingPanel" height="72"/>
+												<Control xsi:type="ImageButton" image="61"/>
+												<Control xsi:type="PaddingPanel" height="6"/>
+											</Container>
+											<Container xsi:type="HorizontalLayout" width="16"/>
+											</Container>
+										</Container>
+								</Container>
+							</Container>
+							<!-- 固定间隔 -->
+							<Container xsi:type="VerticalLayout" width="7"/>
+							<!-- 名片设置 -->
+							<Container xsi:type="ImageTabFolder" width="175" tabheight="33" border="false" backimage="62">
+								<Container xsi:type="ImageTabPage" name="busicardpage" image="63">
+									<Container xsi:type="VerticalLayout">
+										<!-- 上部固定间隔 -->
+										<Container xsi:type="HorizontalLayout" height="3"/>
+										<!-- 个人信息：好友头像 -->
+										<Container xsi:type="HorizontalLayout" height="112">
+											<Control xsi:type="PaddingPanel" width="28"/>
+											<Control xsi:type="ImagePanel" image="2"/>
+											<Control xsi:type="PaddingPanel" width="31"/>
+										</Container>
+										<!-- 固定间隔 -->
+										<Container xsi:type="HorizontalLayout" height="10"/>
+										<!-- 来自、性别 -->
+										<Container xsi:type="HorizontalLayout" height="20">
+											<Control xsi:type="PaddingPanel" width="28"/>
+											<Control xsi:type="LabelPanel" text="来自："/>
+											<Control xsi:type="LabelPanel" name="friendlivein" text="北京" textColor="#FF" border="false"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="LabelPanel" text="性别："/>
+											<Control xsi:type="LabelPanel" name="friendgender" text="男" textColor="#FF" border="false"/>
+											<Control xsi:type="PaddingPanel" width="28"/>
+										</Container>
+										<!-- 个人信息：详细信息 -->
+										<Container xsi:type="HorizontalLayout">
+											<Container xsi:type="HorizontalLayout" width="18"/>
+											<Container xsi:type="VerticalLayout">
+												<Container xsi:type="HorizontalLayout" height="5"/>
+												<!-- 固定电话 -->
+												<Container xsi:type="HorizontalLayout" height="20">
+													<Control xsi:type="ImagePanel" image="64" subimageindex="0"/>
+													<Control xsi:type="PaddingPanel" width="7"/>
+													<Control xsi:type="LabelPanel" name="TelNo" text="010-11111111" border="false" textColor="#FF"/>
+												</Container>
+												<!-- 传真 -->
+												<Container xsi:type="HorizontalLayout" height="20">
+													<Control xsi:type="ImagePanel" image="64" subimageindex="1"/>
+													<Control xsi:type="PaddingPanel" width="7"/>
+													<Control xsi:type="LabelPanel" name="FAXNo" text="010-22222222" border="false" textColor="#FF"/>
+												</Container>
+												<!-- 移动电话 -->
+												<Container xsi:type="HorizontalLayout" height="20">
+													<Control xsi:type="ImagePanel" image="64" subimageindex="2"/>
+													<Control xsi:type="PaddingPanel" width="7"/>
+													<Control xsi:type="LabelPanel" name="MobileNo" text="123456" border="false" textColor="#FF"/>
+												</Container>
+												<!-- email -->
+												<Container xsi:type="HorizontalLayout" height="20">
+													<Control xsi:type="ImagePanel" image="64" subimageindex="3"/>
+													<Control xsi:type="PaddingPanel" width="7"/>
+													<Control xsi:type="LabelPanel" name="EMail" text="jkstyle@sohu.com" border="false" textColor="#FF"/>
+												</Container>
+												<!-- 店铺 -->
+												<Container xsi:type="HorizontalLayout" height="20">
+													<Control xsi:type="ImagePanel" image="64" subimageindex="4"/>
+													<Control xsi:type="PaddingPanel" width="7"/>
+													<Control xsi:type="LabelPanel" name="ShopSite" text="我的店铺" border="false" textColor="#FF"/>
+												</Container>
+												<!-- 底部变高区域 -->
+												<Container xsi:type="HorizontalLayout"/>
+											</Container>
+											<Container xsi:type="HorizontalLayout" width="18"/>
+										</Container>
+										<!-- 自己头像 -->
+										<Container xsi:type="HorizontalLayout" height="122"/>
+									</Container>
+								</Container>
+							</Container>
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="5"/>
+						<!-- 底部的提示栏 -->
+						<Container xsi:type="HorizontalLayout" height="25">
+							<Control xsi:type="LabelPanel" text="回车（Enter）键发送" textColor="#0B445B"/>
+							<Control xsi:type="PaddingPanel"/>
+							<Control xsi:type="LabelPanel" text="广告文字" textColor="#0A57A6"/>
+						</Container>
+					</Container>
+					<Container xsi:type="HorizontalLayout" width="7"/>
+				</Container>
+				<!-- 群聊天 -->
+				<Container xsi:type="HorizontalLayout" name="GroupChatWindow">
+					<!-- 左侧的固定间隔 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>
+					<Container xsi:type="VerticalLayout">
+						<!-- 聊天记录、群管理和广告栏位等 -->
+						<Container xsi:type="HorizontalLayout" height="45">
+							<!-- 按钮部分 -->
+							<Container xsi:type="HorizontalLayout">
+								<!-- 功能按钮 -->
+								<Control xsi:type="PaddingPanel" width="12"/>
+								<Control xsi:type="ImageButton" image="39" name="chathistory"/>
+								<Control xsi:type="ImageButton" image="40" name="messagesetting"/>
+								<Control xsi:type="ImageButton" image="41" name="groupmanage"/>
+								<Control xsi:type="PaddingPanel"/>
+								<!-- 广告栏位 -->
+								<Control xsi:type="ImagePanel" image="1" width="175"/>
+							</Container>
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="2"/>
+						<!-- 聊天及群描述区域 -->
+						<Container xsi:type="HorizontalLayout">
+							<!-- 聊天区域 -->
+							<Container xsi:type="VerticalLayout">
+								<!-- 消息显示区域 -->
+								<Container xsi:type="ImageCanvas" image="45" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false">
+									<Container xsi:type="VerticalLayout">
+										<!-- 好友信息显示 -->
+										<Container xsi:type="HorizontalLayout" height="26" inset="3">
+											<Control xsi:type="ImageButton" image="51"/><!-- TBD -->
+											<Control xsi:type="PaddingPanel" width="5"/>
+											<Control xsi:type="LabelPanel" name="statustext" text="群号" textColor="#393939" horizonalign="left" vertalign="vcenter"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ImageButton" name="netpolice" image="50" vertimageinset="1"/>
+										</Container>
+										
+										<Container xsi:type="HorizontalLayout" height="1"/>
+										
+										<!-- 客户体验 -->
+										<Container xsi:type="ImageCanvas" image="47" height="27" topleft_width="4" topright_width="4" top_height="4" botleft_width="4" botright_width="4" bot_height="4" center_left_width="4" center_right_width="4" border="false" imageinset="3">
+										
+										</Container>
+										<Control xsi:type="RichEdit2" name="messagedisplay" border="false"/>
+									</Container>
+								</Container>
+								<!-- 固定间隔 -->
+								<Container xsi:type="HorizontalLayout" height="5"/>
+								<!-- 消息编辑区域 -->
+								<Container xsi:type="ImageCanvas" image="46" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false" height="145">
+									<Container xsi:type="VerticalLayout">
+										<!-- 信息编辑帮助工具条 -->
+										<Container xsi:type="ToolBar" height="28" inset="7" padding="5" border="false">
+											<Control xsi:type="ImageButton" image="54" name="facebutton"/>
+											<Control xsi:type="ImageButton" image="55" name="fontbutton"/>
+											<Control xsi:type="MenuButton" image="56" menu="ScreenShot"/>
+											<Control xsi:type="MenuButton" image="57" menu="DefReply"/>
+											<Control xsi:type="ImageButton" image="58" name="calcbutton"/>
+											<Control xsi:type="ImageButton" image="59" name="notebookbutton"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ToolSeparator"/>
+											<Control xsi:type="ImageButton" image="60" name="toolbardownarrow" vertimageinset="5"/>
+										</Container>
+										<!-- 文本编辑区 -->
+										<Container xsi:type="HorizontalLayout">
+											<Container xsi:type="HorizontalLayout">
+												<Control xsi:type="RichEdit2" name="messageedit" border="false"/>
+											</Container>
+											<Container xsi:type="VerticalLayout" width="62">
+												<Control xsi:type="PaddingPanel" height="72"/>
+												<Control xsi:type="ImageButton" image="61"/>
+												<Control xsi:type="PaddingPanel" height="6"/>
+											</Container>
+											<Container xsi:type="HorizontalLayout" width="16"/>
+											</Container>
+										</Container>
+								</Container>
+							</Container>
+							<!-- 固定间隔 -->
+							<Container xsi:type="VerticalLayout" width="7"/>
+							<!-- 群描述 -->
+							<Container xsi:type="ImageCanvas" image="65" width="175" topleft_width="20" topright_width="20" top_height="190" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20">
+								<Container xsi:type="VerticalLayout">
+									<!-- 群描述标题栏 -->
+									<Container xsi:type="HorizontalLayout" height="26" inset="6">
+										<Control xsi:type="LabelPanel" text="群描述" textColor="#0B445B" horizonalign="left" vertalign="vcenter"/>
+										<Control xsi:type="PaddingPanel"/>
+										<Control xsi:type="ImageButton" image="60" vertimageinset="5"/>
+									</Container>
+									<Container xsi:type="HorizontalLayout" height="1"/>
+									<!-- 群描述内容 -->
+									<Container xsi:type="HorizontalLayout" height="133" inset="1">
+										<Control xsi:type="RichEdit2" name="groupdescription" border="false"/>
+									</Container>
+									<!-- 群成员标题栏 -->
+									<Container xsi:type="HorizontalLayout" height="26" inset="6">
+										<Control xsi:type="LabelPanel" text="群成员" textColor="#0B445B"/>
+									</Container>
+									<!-- 群成员列表 -->
+									<Container xsi:type="TreeView" name="groupstructure" border="false" inset="1"/>
+								</Container>
+							</Container>	
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="5"/>
+						<!-- 底部的提示栏 -->
+						<Container xsi:type="HorizontalLayout" height="25">
+							<Control xsi:type="LabelPanel" text="回车（Enter）键发送" textColor="#0B445B"/>
+							<Control xsi:type="PaddingPanel"/>
+							<Control xsi:type="LabelPanel" text="广告文字" textColor="#0A57A6"/>
+						</Container>
+					</Container>
+					<!-- 右侧的固定间隔 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>
+				</Container>
+				<!-- 临时讨论 -->
+				<Container xsi:type="HorizontalLayout" name="TempChatWindow">
+					<!-- 左侧的固定间隔 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>
+					<Container xsi:type="VerticalLayout">
+						<!-- 临时讨论功能按钮和广告栏位等 -->
+						<Container xsi:type="HorizontalLayout" height="45">
+							<!-- 按钮部分 -->
+							<Control xsi:type="PaddingPanel" width="12"/>
+							<Control xsi:type="ImageButton" image="36" name="tcw_transferfile"/>
+							<Control xsi:type="ImageButton" image="37" name="tcw_invitation"/>
+							<Control xsi:type="ImageButton" image="42" name="tcw_exitchat"/>
+							<Control xsi:type="ImageButton" image="39" name="tcw_chathistory"/>
+							<Control xsi:type="ImageButton" image="43" name="tcw_dismisschat"/>
+							<Control xsi:type="PaddingPanel"/>
+							<!-- 广告栏位 -->
+							<Control xsi:type="ImagePanel" image="1" width="175"/>
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="2"/>
+						<!-- 聊天及临时讨论描述区域 -->
+						<Container xsi:type="HorizontalLayout">
+							<!-- 聊天区域 -->
+							<Container xsi:type="VerticalLayout">
+								<!-- 消息显示区域 -->
+								<Container xsi:type="ImageCanvas" image="45" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false">
+									<Container xsi:type="VerticalLayout">
+										<!-- 好友信息显示 -->
+										<Container xsi:type="HorizontalLayout" height="26" inset="3">
+											<Control xsi:type="ImageButton" image="51"/><!-- TBD -->
+											<Control xsi:type="PaddingPanel" width="5"/>
+											<Control xsi:type="LabelPanel" name="statustext" text="某某发起的临时讨论" textColor="#393939"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ImageButton" name="netpolice" image="50" vertimageinset="1"/>
+										</Container>
+										<Control xsi:type="RichEdit2" name="messagedisplay" border="false"/>
+									</Container>
+								</Container>
+								<!-- 固定间隔 -->
+								<Container xsi:type="HorizontalLayout" height="5"/>
+								<!-- 消息编辑区域 -->
+								<Container xsi:type="ImageCanvas" image="46" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20" border="false" height="145">
+									<Container xsi:type="VerticalLayout">
+										<!-- 信息编辑帮助工具条 -->
+										<Container xsi:type="ToolBar" height="28" inset="7" padding="5" border="false">
+											<Control xsi:type="ImageButton" image="54" name="facebutton"/>
+											<Control xsi:type="ImageButton" image="55" name="fontbutton"/>
+											<Control xsi:type="MenuButton" image="56" menu="ScreenShot"/>
+											<Control xsi:type="MenuButton" image="57" menu="DefReply"/>
+											<Control xsi:type="ImageButton" image="58" name="calcbutton"/>
+											<Control xsi:type="ImageButton" image="59" name="notebookbutton"/>
+											<Control xsi:type="PaddingPanel"/>
+											<Control xsi:type="ToolSeparator"/>
+											<Control xsi:type="ImageButton" image="60" name="toolbardownarrow" vertimageinset="5"/>
+										</Container>
+										<!-- 文本编辑区 -->
+										<Container xsi:type="HorizontalLayout">
+											<Container xsi:type="HorizontalLayout">
+												<Control xsi:type="RichEdit2" name="messageedit" border="false"/>
+											</Container>
+											<Container xsi:type="VerticalLayout" width="62">
+												<Control xsi:type="PaddingPanel" height="72"/>
+												<Control xsi:type="ImageButton" image="61"/>
+												<Control xsi:type="PaddingPanel" height="6"/>
+											</Container>
+											<Container xsi:type="HorizontalLayout" width="16"/>
+										</Container>
+									</Container>
+								</Container>
+							</Container>
+							<!-- 固定间隔 -->
+							<Container xsi:type="VerticalLayout" width="7"/>
+							<!-- 临时讨论信息 -->
+							<Container xsi:type="ImageCanvas" image="67" width="175" topleft_width="20" topright_width="20" top_height="30" botleft_width="20" botright_width="20" bot_height="20" center_left_width="20" center_right_width="20">
+								<Container xsi:type="VerticalLayout">
+									<!-- 临时讨论标题栏 -->
+									<Container xsi:type="HorizontalLayout" height="26" inset="6">
+										<Control xsi:type="LabelPanel" text="临时讨论成员" textColor="#0B445B" />
+										<Control xsi:type="PaddingPanel"/>
+										<Control xsi:type="ImageButton" image="60" vertimageinset="5"/>
+									</Container>
+									<!-- 临时讨论成员列表 -->
+									<Container xsi:type="List" header="hidden" footer="hidden" inset="1"/>
+								</Container>
+							</Container>	
+						</Container>
+						<!-- 固定间隔 -->
+						<Container xsi:type="HorizontalLayout" height="5"/>
+						<!-- 底部的提示栏 -->
+						<Container xsi:type="HorizontalLayout" height="25">
+							<Control xsi:type="TextPanel" text="回车（Enter）键发送" textColor="#0B445B"/>
+							<Control xsi:type="PaddingPanel"/>
+							<Control xsi:type="TextPanel" text="广告文字" textColor="#0A57A6"/>
+						</Container>
+					</Container>
+					<!-- 右侧的固定间隔 -->
+					<Container xsi:type="HorizontalLayout" width="7"/>			
+				</Container>
+				
+				<!-- MessageBox 窗口 -->
+				<Container xsi:type="VerticalLayout" name="MessageBox">
+					<Container xsi:type="WhiteCanvas" height="118">
+						<Container xsi:type="VerticalLayout">
+							<!-- 图标和文字-->
+							<Container xsi:type="HorizontalLayout" height="80">
+								<Container xsi:type="VerticalLayout" width="15"/>
+								<!-- icon -->
+								<Container xsi:type="VerticalLayout" width="24">
+									<Control xsi:type="PaddingPanel"/>
+									<Control xsi:type="ImagePanel" name="displayicon" image="1"/>
+									<Control xsi:type="PaddingPanel"/>
+								</Container>
+								<Container xsi:type="HorizontalLayout" name="icontextpadding" width="12"/>
+								<!-- text -->
+								<Container xsi:type="VerticalLayout">
+									<Control xsi:type="PaddingPanel"/>
+									<Control xsi:type="TextPanel" name="displaymessage"/>
+									<Control xsi:type="PaddingPanel"/>
+								</Container>
+								<Container xsi:type="VerticalLayout" width="15"/>
+							</Container>
+							<!-- 按钮区域 -->
+							<Container xsi:type="HorizontalLayout" height="32" inset="6">
+								<Control xsi:type="PaddingPanel"/>
+								<Control xsi:type="Button" text="确定" width="40" name="buttonok"/>
+								<Control xsi:type="PaddingPanel" width="10" name="buttonpadding"/>
+								<Control xsi:type="Button" text="取消" width="40" name="buttoncancel"/>
+								<Control xsi:type="PaddingPanel"/>
+							</Container>
+							<Container xsi:type="HorizontalLayout"/>
+						</Container>
+					</Container>
+					<Container xsi:type="HorizontalLayout"/>
+				</Container>
+				<!-- 客户区域end -->
+			</Container>
+		</Container>
+	</FrameWindow>
+	<!-- 所有的菜单 -->
+	<Menus>
+		<!-- 设置在线状态菜单 -->
+		<Container xsi:type="MenuList" name="OnlineStatusMenu">
+			<Control xsi:type="MenuItem" image="32" text="在线" name="menuitem_online" uid="10"/>
+			<Control xsi:type="MenuItem" image="34" text="离开" name="menuitem_away" uid="12"/>
+			<Control xsi:type="MenuItem" image="33" text="隐身" name="menuitem_hidden" uid="13"/>
+			<Control xsi:type="MenuItem" image="35" text="注销" name="menuitem_logout" uid="14"/>
+		</Container>
+		<!-- 测试菜单1 -->
+		<Container xsi:type="MenuList" name="TestMenu">
+			<Control xsi:type="MenuItem" image="3" text="first" uid="20"/>
+			<Control xsi:type="MenuItem" image="4" text="second" uid="21" submenu="AnotherTest"/>
+			<Control xsi:type="MenuItem" image="5" text="third" uid="22"/> 		
+		</Container>
+		<!-- 测试菜单2 -->
+		<Container xsi:type="MenuList" name="AnotherTest">
+			<Control xsi:type="MenuItem" image="3" text="cool" uid="31"/>
+			<Control xsi:type="MenuItem" image="4" text="TTFU" uid="32"/>
+		</Container>
+		<!-- 截屏操作菜单 -->
+		<Container xsi:type="MenuList" name="ScreenShot">
+			<Control xsi:type="MenuItem" text="截取当前屏幕" uid="40" image="0"/>
+			<Control xsi:type="MenuItem" text="截取背景屏幕" uid="41" image="0"/>
+		</Container>
+		<!-- 快捷恢复菜单 -->
+		<Container xsi:type="MenuList" name="DefReply">
+			<Control xsi:type="MenuItem" text="Hi~^-^" uid="50" image="0" />
+			<Control xsi:type="MenuItem" text="OK,没问题！" uid="51" image="0"/>
+			<Control xsi:type="MenuItem" text="我知道了，谢谢！" uid="52" image="0"/>
+			<Control xsi:type="MenuItem" text="我现在忙，一会和您联系..." uid="53" image="0"/>
+			<Control xsi:type="MenuItem" text="那么晚了，还在加班，辛苦了！" uid="54" image="0"/>
+			<Control xsi:type="MenuItem" text="快捷恢复设置" uid="55" image="0"/>
+		</Container>
+	</Menus>
+	<!-- 所有的弹出窗口 -->
+	<ToolWindow>
+		<!-- 表情窗口 -->
+		<Container xsi:type="WhiteCanvas" name="FaceWindow">
+			<!-- 表情容器 -->
+			<Container xsi:type="GifGridPanel" name="facegridpanel">
+				<!-- 表情序列 -->
+				<Control xsi:type="GifImagePanel" image=".\Chat\1.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\2.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\3.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\4.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\5.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\6.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\7.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\8.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\9.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\10.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\11.gif"/>
+				<Control xsi:type="GifImagePanel" image=".\Chat\12.gif"/>
+			</Container>
+		</Container>
+	</ToolWindow>
+</UIRoot>

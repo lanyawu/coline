@@ -1,0 +1,58 @@
+object frmAddMemo: TfrmAddMemo
+  Left = 325
+  Top = 186
+  Width = 442
+  Height = 215
+  BorderIcons = [biSystemMenu]
+  Caption = #22686#21152#20107#39033
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCanResize = FormCanResize
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 0
+    Top = 8
+    Width = 48
+    Height = 13
+    Caption = #22686#21152#20107#39033
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object mmLog: TMemo
+    Left = 0
+    Top = 32
+    Width = 433
+    Height = 105
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object btnAdd: TButton
+    Left = 248
+    Top = 152
+    Width = 75
+    Height = 25
+    Caption = #22686#21152'(&A)'
+    TabOrder = 1
+    OnClick = btnAddClick
+  end
+  object btnCancel: TButton
+    Left = 352
+    Top = 152
+    Width = 75
+    Height = 25
+    Caption = #21462#28040'(&C)'
+    TabOrder = 2
+    OnClick = btnCancelClick
+  end
+end

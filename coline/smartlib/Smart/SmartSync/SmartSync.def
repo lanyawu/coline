@@ -1,0 +1,6 @@
+LIBRARY "SmartSync"
+
+EXPORTS
+  SmartSyncPath
+  EstablishSyncPath
+  AnalyseSyncPath

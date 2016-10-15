@@ -1,0 +1,189 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Buttons, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    btnAdd: TButton;
+    mmContent: TMemo;
+    lbAffix: TListBox;
+    btnAffix: TButton;
+    Label1: TLabel;
+    edtTitle: TEdit;
+    Label2: TLabel;
+    edtFileName: TEdit;
+    sbBrowser: TSpeedButton;
+    btnInit: TButton;
+    btnClear: TButton;
+    btnRead: TButton;
+    btnNode: TButton;
+    procedure sbBrowserClick(Sender: TObject);
+    procedure btnInitClick(Sender: TObject);
+    procedure btnAffixClick(Sender: TObject);
+    procedure btnClearClick(Sender: TObject);
+    procedure btnAddClick(Sender: TObject);
+    procedure btnReadClick(Sender: TObject);
+    procedure btnNodeClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+uses
+  uLogMgr;
+{$R *.dfm}
+
+procedure TForm1.sbBrowserClick(Sender: TObject);
+var
+  Dlg: TSaveDialog;
+begin
+  Dlg := TSaveDialog.Create(Self);
+  try
+    if Dlg.Execute then
+    begin
+      edtFileName.Text := Dlg.FileName;
+    end;
+  finally
+    Dlg.Free;
+  end;
+end;
+
+procedure TForm1.btnInitClick(Sender: TObject);
+begin
+  if not LM_InitLogMgr(PChar(edtFileName.Text)) then
+     ShowMessage('初始化错误')
+  else
+     ShowMessage('初始化成功');
+end;
+
+procedure TForm1.btnAffixClick(Sender: TObject);
+var
+  Dlg: TOpenDialog;
+begin
+  Dlg := TOpenDialog.Create(Self);
+  try
+    if Dlg.Execute then
+    begin
+      lbAffix.Items.Add(Dlg.FileName);
+    end;
+  finally
+    Dlg.Free;
+  end;
+end;
+
+procedure TForm1.btnClearClick(Sender: TObject);
+begin
+  lbAffix.Clear;
+end;
+
+procedure TForm1.btnAddClick(Sender: TObject);
+var
+  nLogId: integer;
+  str: string;
+  strAffix: string;
+  i: integer;
+begin
+  nLogId := 0;
+  strAffix := '';
+  for i := 0 to  lbAffix.Count - 1 do
+  begin
+    strAffix := strAffix + lbAffix.Items.Strings[i] + '|';
+  end;
+  str := mmContent.Lines.Text;
+  if not LM_AddLog(@nLogId, 0, PChar(edtTitle.Text), PChar(str), Length(str), PChar(strAffix), False) then
+     ShowMessage('AddLog Failed')
+  else
+     ShowMessage('AddLog Succ');
+end;
+
+procedure TForm1.btnReadClick(Sender: TObject);
+var
+  szTitle: PChar;
+  szContent: PChar;
+  nBufSize: integer;
+  szCreateDate: string;
+  szLastModiDate: string;
+  Affixs, pItem: PInteger;
+  nAffixCount: integer;
+  i: integer;
+  szFileName: string;
+begin
+  szTitle := nil;
+  szContent := nil;
+  nBufSize := 0;
+  SetLength(szCreateDate, 256);
+  SetLength(szLastModiDate, 256);
+  FillChar(szCreateDate[1], 256, 0);
+  FillChar(szLastModiDate[1], 256, 0);
+  SetLength(szFileName, 256);
+  FillChar(szFileName[1], 256, 0);
+  lbAffix.Items.Clear;
+  if LM_GetLog(2, @szTitle, @szContent, @nBufSize,
+           PChar(szCreateDate), PChar(szLastModiDate)) then begin
+     edtTitle.Text := szTitle;
+     mmContent.Lines.Text := szContent;
+     //读取附件
+     Affixs := nil;
+     if LM_GetAffixList(2, @Affixs, @nAffixCount) then
+     begin
+       pItem := Affixs;
+       for i := 0 to nAffixCount - 1 do
+       begin
+         FillChar(szFileName[1], 256, 0);
+         if LM_GetAffixInfo(pItem^, PChar(szFileName)) then
+         begin
+           lbAffix.Items.Add(szFileName);
+         end;
+         Inc(pItem);
+       end;
+       if Affixs <> nil then
+          LM_DeleteInt(Affixs);
+     end;
+  end else
+     ShowMessage('Get Log Failed');
+  if szTitle <> nil then
+     LM_DeleteString(szTitle);
+  if szContent <> nil then
+     LM_DeleteString(szContent);
+end;
+
+procedure TForm1.btnNodeClick(Sender: TObject);
+var
+  pItems, p: PLOG_NODE_ITEM;
+  nCount: integer;
+  i: integer;
+begin
+  nCount := 0;
+  pItems := nil;
+  mmContent.Lines.Clear;
+  if LM_GetChildNodes(0, @pItems, @nCount) then
+  begin
+    mmContent.Lines.Add('Child Node Items');
+    p := pItems;
+    for i := 0 to nCount - 1 do
+    begin
+      mmContent.Lines.Add(p^.szNodeName);
+      Inc(p);
+    end;
+    if pItems <> nil then
+       LM_DeleteNodeItems(pItems);
+  end else
+    ShowMessage('Get Child Node Failed');
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  LM_DestroyLogMgr;
+end;
+
+end.

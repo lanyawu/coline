@@ -1,0 +1,6 @@
+LIBRARY "SmartLog"
+
+EXPORTS
+  SetSmartLogType
+  SetSmartLogIsWrite
+  PrintSmartLog

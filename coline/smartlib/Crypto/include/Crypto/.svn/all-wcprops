@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/it168im/!svn/ver/1521/branches/1.0/NewIM/include/Crypto
+END
+zconf.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/it168im/!svn/ver/615/branches/1.0/NewIM/include/Crypto/zconf.h
+END
+Crypto.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/it168im/!svn/ver/1521/branches/1.0/NewIM/include/Crypto/Crypto.h
+END
+zlib.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/it168im/!svn/ver/615/branches/1.0/NewIM/include/Crypto/zlib.h
+END
+md5.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/it168im/!svn/ver/795/branches/1.0/NewIM/include/Crypto/md5.h
+END

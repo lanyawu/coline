@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LogMgr", "LogMgr.vcxproj", "{6608287C-E3C0-4C65-B8A0-092EF0EF9760}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TransLog", "..\TransLog\TransLog.vcxproj", "{112E2E4B-D3FF-4B07-80E6-F17949999C01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6608287C-E3C0-4C65-B8A0-092EF0EF9760}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6608287C-E3C0-4C65-B8A0-092EF0EF9760}.Debug|Win32.Build.0 = Debug|Win32
+		{6608287C-E3C0-4C65-B8A0-092EF0EF9760}.Release|Win32.ActiveCfg = Release|Win32
+		{6608287C-E3C0-4C65-B8A0-092EF0EF9760}.Release|Win32.Build.0 = Release|Win32
+		{112E2E4B-D3FF-4B07-80E6-F17949999C01}.Debug|Win32.ActiveCfg = Debug|Win32
+		{112E2E4B-D3FF-4B07-80E6-F17949999C01}.Debug|Win32.Build.0 = Debug|Win32
+		{112E2E4B-D3FF-4B07-80E6-F17949999C01}.Release|Win32.ActiveCfg = Release|Win32
+		{112E2E4B-D3FF-4B07-80E6-F17949999C01}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

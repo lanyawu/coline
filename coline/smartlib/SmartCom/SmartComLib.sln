@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSvrCom", "TestSvrCom\TestSvrCom.vcxproj", "{76507D69-7566-4999-A63B-F4419AC669F8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D} = {C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestLoadCom", "TestLoadCom\TestLoadCom.vcxproj", "{C72100CF-DF1E-4EE8-BEC2-19BBEA58CDA2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartComLib", "SmartComLib\SmartComLib.vcxproj", "{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76507D69-7566-4999-A63B-F4419AC669F8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{76507D69-7566-4999-A63B-F4419AC669F8}.Debug|Win32.Build.0 = Debug|Win32
+		{76507D69-7566-4999-A63B-F4419AC669F8}.Release|Win32.ActiveCfg = Release|Win32
+		{76507D69-7566-4999-A63B-F4419AC669F8}.Release|Win32.Build.0 = Release|Win32
+		{C72100CF-DF1E-4EE8-BEC2-19BBEA58CDA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C72100CF-DF1E-4EE8-BEC2-19BBEA58CDA2}.Debug|Win32.Build.0 = Debug|Win32
+		{C72100CF-DF1E-4EE8-BEC2-19BBEA58CDA2}.Release|Win32.ActiveCfg = Release|Win32
+		{C72100CF-DF1E-4EE8-BEC2-19BBEA58CDA2}.Release|Win32.Build.0 = Release|Win32
+		{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}.Debug|Win32.Build.0 = Debug|Win32
+		{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}.Release|Win32.ActiveCfg = Release|Win32
+		{C3B3D00A-9F97-47C1-BBF2-F38B42772B1D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

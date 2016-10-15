@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp
+END
+upnpreplyparse.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/upnpreplyparse.h
+END
+igd_desc_parse.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/igd_desc_parse.h
+END
+bsdqueue.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/bsdqueue.h
+END
+minixml.h
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/minixml.h
+END
+minisoap.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/minisoap.h
+END
+upnperrors.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/upnperrors.h
+END
+declspec.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/declspec.h
+END
+miniupnpc.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/miniupnpc.h
+END
+miniwget.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/miniwget.h
+END
+upnpcommands.h
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/it168im/!svn/ver/713/branches/1.0/NewIM/include/miniupnp/upnpcommands.h
+END
